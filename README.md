@@ -19,7 +19,7 @@ library(OmicCircos)
 data(UCSC.hg19.chr)
 head(UCSC.hg19.chr)
 ```
-<img src="out/segment_data.png" width="350" height="200"> 
+<img src="out/segment_data.png" width="350" height="150"> 
 
 ### mapping data
 
@@ -45,7 +45,7 @@ data ( TCGA.BC.fus ) ;
 head ( TCGA.BC.fus [ , c ( 1 : 6 ) ] ) 
 ```
 
-<img src="out/link_data.png" width="350" height="150"> 
+<img src="out/link_data.png" width="350" height="200"> 
 
 ### link polygon data
 
