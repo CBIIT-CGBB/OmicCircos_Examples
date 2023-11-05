@@ -23,11 +23,33 @@ head(UCSC.hg19.chr)
 
 ### mapping data
 
+The mapping data are an R data frame which includes values to be drawn in the graph. In the mapping data,
+columns 1 and 2 are segment name and position respectively. Column 3 and beyond is optional which can be the value
+or name. In the following example, the third column is the gene symbol. Column 4 and 5 are the gene expression
+values for each sample.
+
 | Chromosome  | Genomic Position | gene symbol | value |
 | ------------- | ------------- | ------------- | ------------- |
 | chr1  | 1234  | Gene A | 135 |
 | chr1  | 5678  | Gene B | 246 |
-### 
+
+### link data 
+The link data are for drawing curves between two anchor points. In the link data, columns 1, 2, 3 are the segment
+name, position, label of the first anchor point; columns 4, 5, 6 are segment name, position, label of the second anchor
+point Column 7 is optional and could be used for the link type description.
+```r
+## load the OmicCircos-package
+library (OmicCircos) ;
+## TCGA fusion gene data
+data ( TCGA.BC.fus ) ;
+head ( TCGA.BC.fus [ , c ( 1 : 6 ) ] ) 
+```
+
+<img src="out/link_data.png" width="350" height="150"> 
+
+### link polygon data
+
+
 
 <img src="out/OMIC_SampleID1.txt.png" width="600" height="600"> 
 
