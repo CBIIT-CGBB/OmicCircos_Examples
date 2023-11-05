@@ -6,37 +6,42 @@
 
 
 ```r
+# Remove all objects from the current R session to start with a clean environment
 rm(list=ls());
-
+# Load the OmicCircos library, which is used for generating circular plots for omics data
 library(OmicCircos)
-## input files
+## Get input files
 cfile <- dir("../data_sets/OMIC_CNV1", "txt")
-## colors
+## Define a color palette with 10 semi-transparent colors
 cols  <- rainbow(10, alpha=0.5)
-
+# Loop over the input files to generate circular plots for each
 for (i in 1:length(cfile)){
+  ## Extract the current sample and its primary site
   id.n   <- cfile[i]
-  ## input CNV file
+  ## Construct file paths for the CNV
   infile <- paste0("../data_sets/OMIC_CNV1/", cfile[i])
-  ## read CNV data
+  ## Read CNV data
   cnv    <- read.table(infile, sep="\t", header=T)
-  ## input fusion file
+  ## Construct file paths for the FUSION
   inf2   <- paste0("../data_sets/OMIC_FUSION/", cfile[i]);
-  ## read fusion data
+  ## Read fusion data
   dat    <- read.table(inf2, sep="\t", header=T)
-  ## calculate cutoff of CNV
+  ## Calculate cutoff of CNV
   c.m    <- mean(cnv[,3])
-  ## output file
+  ## Define an output file name for the circular plot PDF
   pdff <- paste0("../out/", id.n, ".pdf")
+  ## Create a PDF device for plotting, with a size of 8 by 8 inches
   pdf(pdff, 8, 8);
+  ## Set the margins of the plot
   par(mar=c(2, 2, 2, 2));
+  ## Initialize a blank plot with custom dimensions
   plot(c(1,800), c(1,800), type="n", axes=F, xlab="", ylab="", main=id.n);
-  ## plot chromosome
+  ## Plot the chromosomes on the circular plot with specified radius, chromosome annotation, and scaling
   circos(R=350, cir="hg19", W=10, type="chr", print.chr.lab=T, scale=T);
-  ## plot CNV
+  ## Add copy number variation (CNV) data to the circular plot
   circos(R=200, cir="hg19", W=160,  mapping=cnv, col.v=3, type="b2", 
          B=F, lwd=1, cutoff=c.m, col=cols[c(2,7)]);
-  ## plot fusion
+  ## Add fusion data to the circular plot as links
   circos(R=200, cir="hg19", mapping=dat, type="link", lwd=2, col=cols[1]);
   dev.off()
 }
