@@ -15,7 +15,7 @@ library(OmicCircos)
 data(UCSC.hg19)
 head(UCSC.hg19)
 ```
-<img src="out/segment_data.png" width="600" height="200"> 
+<img src="out/segment_data.png" width="600" height="150"> 
 
 ### mapping data
 
