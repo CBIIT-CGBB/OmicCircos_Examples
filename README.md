@@ -1,6 +1,8 @@
 # OmicCircos_Examples
-<img src="out/OMIC_SampleID1.txt.png" width="300" height="300"> 
+<img src="out/OMIC_SampleID1.txt.png" width="600" height="600"> 
+
 [R codes](R/03OMIC_CNV1_plot.R)
+
 
 ```r
 rm(list=ls());
