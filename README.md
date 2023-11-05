@@ -45,7 +45,7 @@ data ( TCGA.BC.fus ) ;
 head ( TCGA.BC.fus [ , c ( 1 : 6 ) ] ) 
 ```
 
-<img src="out/link_data.png" width="350" height="180"> 
+<img src="out/link_data.png" width="350" height="140"> 
 
 ### link polygon data
 
