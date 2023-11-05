@@ -48,8 +48,16 @@ head ( TCGA.BC.fus [ , c ( 1 : 6 ) ] )
 <img src="out/link_data.png" width="350" height="140"> 
 
 ### link polygon data
+The link polygon data are for connecting two segments with a polygon graph. In the link polygon data,
+columns 1, 2 and 3 are the name, start and end points for the first segment and columns 4, 5 and 6 are the name,
+start and end points for the second segment.
 
+| Chr1  | Start1 | End1 | Chr2 | Start2 | End2 |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| chr1  | 1111  | 2222 | chr2 | 5555  | 6666 |
+| chr1  | 3333  | 4444 | chr2 | 7777  | 8888 |
 
+# Exmaples
 
 <img src="out/OMIC_SampleID1.txt.png" width="600" height="600"> 
 
