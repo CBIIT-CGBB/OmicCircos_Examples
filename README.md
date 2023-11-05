@@ -10,11 +10,11 @@
 rm(list=ls());
 # Load the OmicCircos library, which is used for generating circular plots for omics data
 library(OmicCircos)
-## Get input files
+## Get input file names
 cfile <- dir("../data_sets/OMIC_CNV1", "txt")
 ## Define a color palette with 10 semi-transparent colors
 cols  <- rainbow(10, alpha=0.5)
-# Loop over the input files to generate circular plots for each
+## Loop over the input files to generate circular plots for each
 for (i in 1:length(cfile)){
   ## Extract the current sample and its primary site
   id.n   <- cfile[i]
@@ -52,37 +52,42 @@ for (i in 1:length(cfile)){
 [R codes](R/03OMIC_CNV2_plot.R)
 
 ```r
+## Remove all objects from the current R session to start with a clean environment
 rm(list=ls());
-
+## Load the OmicCircos library, which is used for generating circular plots for omics data
 library(OmicCircos)
-
-## select samples
+## Get input file names
 cfile <- dir("../data_sets/OMIC_CNV1", "txt")
-## colors
+## Define a color palette with 10 semi-transparent colors
 cols  <- rainbow(10, alpha=0.5)[c(1,7,2,9,6)]
-## output file
+## Define an output file name for the circular plot PDF
 pdff <- paste0("../out/04OMIC_CNV2_plot.pdf")
+## Create a PDF device for plotting, with a size of 8 by 8 inches
 pdf(pdff, 8, 8);
+## Set the margins of the plot
 par(mar=c(2, 2, 2, 2));
+## Initialize a blank plot with custom dimensions
 plot(c(1,800), c(1,800), type="n", axes=F, xlab="", ylab="", main="")
-## plot chromosome
+## Plot the chromosomes on the circular plot with specified radius, chromosome annotation, and scaling
 circos(R=400, cir="hg19", W=10, type="chr", print.chr.lab=T, scale=T);
-
+## Initial radius
 R <- 340
+## Loop over the input files to generate circular plots for each
 for (i in 1:length(cfile)){
   id.n   <- cfile[i]
-  ## input CNV file
+  ## Input CNV file
   infile <- paste0("../data_sets/OMIC_CNV2/", cfile[i])
-  ## read CNV data
+  ## Read CNV data
   cnv    <- read.table(infile, sep="\t", header=T)
-  ## calculate cutoff of CNV
+  ## Calculate cutoff of CNV
   c.m    <- mean(cnv[,5])
-  ## input fusion file
+  ## Input fusion file
   inf2   <- paste0("../data_sets/OMIC_FUSION/", cfile[i]);
-  ## read fusion data
+  ## Read fusion data
   dat    <- read.table(inf2, sep="\t", header=T)
+  ## Generate index of ploting backagroud, such as B option 
   b.i <- i%%2
-  ## plot CNV
+  ## Plot CNV
   if (b.i==1){
     circos(R=R, cir="hg19", W=40,  mapping=cnv, col.v=5, type="ml3", 
            B=F, lwd=2, cutoff=2, col=cols[i]);
@@ -90,11 +95,11 @@ for (i in 1:length(cfile)){
     circos(R=R, cir="hg19", W=40,  mapping=cnv, col.v=5, type="ml3", 
            B=T, lwd=2, cutoff=2, col=cols[i]);
   }
-  ## plot fusions
+  ## Plot fusions
   R <- R - 40
   circos(R=160, cir="hg19", mapping=dat, type="link", lwd=2, col=cols[i]);
 }
-
+## Plot legend 
 legend("topleft", legend=paste0("SampleID1-5"), 
        bty="n", cex=0.8, title="Outside(CNV)")
 legend("topright", legend=paste0("SampleID",1:5), lwd=2, col=cols, 
@@ -109,40 +114,48 @@ dev.off()
 [R codes](R/01plot_COSMIC.R)
 
 ```r
+## Remove all objects from the current R session to start with a clean environment
 rm(list=ls());
-
+## Load the OmicCircos library, which is used for generating circular plots for omics data
 library(OmicCircos)
-## data set names
+## Define a vector of phenotype IDs to be used in the analysis
 COSMIC_PHENOTYPE_ID  <- c("COSO29914830", "COSO32054826", "COSO29914826")
+## Corresponding primary sites for each phenotype ID
 PRIMARY_SITE <- c("lung", "prostate", "lung")
-## colors
+## Define a color palette with 10 semi-transparent colors
 cols  <- rainbow(10, alpha=0.8) 
-
+## Loop over the phenotype IDs to generate circular plots for each
 for (p.i in 1:length(COSMIC_PHENOTYPE_ID)){
+  ## Extract the current phenotype ID and its primary site
   tid    <- COSMIC_PHENOTYPE_ID[p.i]
   tname  <- PRIMARY_SITE[p.i]
-  ## read input data sets
+  ## Construct file paths for the CNV, gene expression, and fusion data files based on the phenotype ID and primary site
   cnv.f  <- paste0("../data_sets/COSMIC_CNV/", tid, "_", tname, ".txt")
   gexp.f <- paste0("../data_sets/COSMIC_EXP/", tid, "_", tname, ".txt")
   fus.f  <- paste0("../data_sets/COSMIC_FUSION/", tid, "_", tname, ".txt")
+  ## Read the data from the constructed file paths into data frames
   cnv    <- read.table(cnv.f, header=T)
   gexp   <- read.table(gexp.f, header=T)
   fus    <- read.table(fus.f, header=T)
-  ## output file name
+  ## Define an output file name for the circular plot PDF
   pdff <- paste0("../out/OC_", tid, "_", tname, ".pdf")
+  ## Create a PDF device for plotting, with a size of 8 by 8 inches
   pdf(pdff, 8, 8);
+  ## Set the margins of the plot
   par(mar=c(2, 2, 2, 2));
+  ## Initialize a blank plot with custom dimensions
   plot(c(1,800), c(1,800), type="n", axes=F, xlab="", ylab="", main="");
-  ## plot chromosome
+  ## Plot the chromosomes on the circular plot with specified radius, chromosome annotation, and scaling
   circos(R=400, cir="hg19", W=4, type="chr", print.chr.lab=T, scale=T);
-  ## plot heatmap
+  ## Add a heatmap to the circular plot representing gene expression data
   circos(R=260, cir="hg19", W=140, mapping=gexp[,c(1:20)],  col.v=4,  type="heatmap2", 
          lwd=0.1);
-  ## plot CNV
+  ## Add copy number variation (CNV) data to the circular plot
   circos(R=110, cir="hg19", W=160,  mapping=cnv, col.v=4, type="b2", 
          B=F, lwd=1, cutoff=2, col=cols[c(2,7)]);
-  ## plot fussion
+  ## Add fusion data to the circular plot as links
   circos(R=120, cir="hg19", mapping=fus, type="link", lwd=1, col=cols[1]);
+  ## Close the PDF device, which saves the plot to a file
   dev.off()
 }
 
@@ -153,36 +166,48 @@ for (p.i in 1:length(COSMIC_PHENOTYPE_ID)){
 [R codes](R/02plot_COSMIX_gene.R)
 
 ```r
+## Remove all objects from the current R session to start with a clean environment
 rm(list=ls());
-
+## Load the OmicCircos library, which is used for generating circular plots for omics data
 library(OmicCircos)
-## data set names
+## Define a vector of phenotype IDs to be used in the analysis
 COSMIC_PHENOTYPE_ID  <- c("COSO29914830", "COSO32054826", "COSO29914826")
+## Corresponding primary sites for each phenotype ID
 PRIMARY_SITE <- c("lung", "prostate", "lung")
-## colors
+## Define a color palette with 10 semi-transparent colors
 cols   <- rainbow(10, alpha=0.8)[c(1,2,9,7)] 
-## read cancer gene data
+## Read gene label file
 gene   <- read.table("../data_sets/COSMIC_GENE/gene.txt", header=T)
+## Get index for each gene
 row.i  <- 1:nrow(gene)
+## Get the index for outside and inside label index
 g.i    <- which(row.i%%2==1)
-## output file name
+## Define an output file name for the circular plot PDF
 pdff <- paste0("../out/02plot_COSMIC_gene.pdf")
+## Create a PDF device for plotting, with a size of 8 by 8 inches
 pdf(pdff, 8, 8);
+## Set the margins of the plot
 par(mar=c(2, 2, 2, 2));
+## Initialize a blank plot with custom dimensions
 plot(c(1,800), c(1,800), type="n", axes=F, xlab="", ylab="", main="");
-## plot chromosome
+## Plot the chromosomes on the circular plot with specified radius, chromosome annotation, and scaling
 circos(R=290, cir="hg19", W=4, type="chr", print.chr.lab=T, scale=T);
-## plot genes
+## Plot genes at outside
 circos(R=325, cir="hg19", W=20, mapping=gene[g.i,], type="label", 
        side="out", col=c("black"), cex=c(0.4));
+## Plot genes at inside
 circos(R=280, cir="hg19", W=20, mapping=gene[-g.i,], type="label", 
        side="in", col=c("black"), cex=c(0.4));
-## plot fussions
+## Plot fussions for each sample with different colors
 for (p.i in 1:length(COSMIC_PHENOTYPE_ID)){
+  ## Extract the current phenotype ID and its primary site
   tid    <- COSMIC_PHENOTYPE_ID[p.i]
   tname  <- PRIMARY_SITE[p.i]
+  ## Construct file paths for fusion
   fus.f  <- paste0("../data_sets/COSMIC_FUSION/", tid, "_", tname, ".txt")
+  ## Read fusion data
   fus  <- read.table(fus.f, header=T)
+  ## Add fusion data to the circular plot as links
   circos(R=200, cir="hg19", mapping=fus, type="link", lwd=1, col=cols[p.i]);
 }
 
