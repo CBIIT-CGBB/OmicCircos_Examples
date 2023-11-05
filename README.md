@@ -8,11 +8,15 @@ BiocManager::install("OmicCircos")
 ```
 # Input file formats
 Four input data files are used in the package: segment data, mapping data, link data and link polygon data. Segment data are required to draw the anchor circular track. The remaining three data sets are used to draw additional tracks or connections.
-| Chromosome  | Genomic Position |
-| ------------- | ------------- |
-| chr1  | 1234  |
-| chr1  | 5678  |
+### segment data
 
+### mapping data
+
+| Chromosome  | Genomic Position | gene symbol | value |
+| ------------- | ------------- | ------------- | ------------- |
+| chr1  | 1234  | Gene A | 135 |
+| chr1  | 5678  | Gene B | 246 |
+### 
 
 <img src="out/OMIC_SampleID1.txt.png" width="600" height="600"> 
 
