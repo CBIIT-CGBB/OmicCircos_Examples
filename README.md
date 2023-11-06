@@ -45,7 +45,7 @@ data ( TCGA.BC.fus ) ;
 head ( TCGA.BC.fus [ , c ( 1 : 6 ) ] ) 
 ```
 
-<img src="out/link_data.png" width="350" height="120"> 
+<img src="out/link_data.png" width="350" height="110"> 
 
 ### link polygon data
 The link polygon data are for connecting two segments with a polygon graph. In the link polygon data,
