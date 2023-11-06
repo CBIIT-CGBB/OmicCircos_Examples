@@ -28,7 +28,7 @@ columns 1 and 2 are segment name and position respectively. Column 3 and beyond 
 or name. In the following example, the third column is the gene symbol. Column 4 and 5 are the gene expression
 values for each sample.
 
-<font size= "1">
+<font size= "0.1">
 
 | Chromosome  | Genomic Position | gene symbol | value |
 | ------------- | ------------- | ------------- | ------------- |
