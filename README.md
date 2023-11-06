@@ -28,14 +28,10 @@ columns 1 and 2 are segment name and position respectively. Column 3 and beyond 
 or name. In the following example, the third column is the gene symbol. Column 4 and 5 are the gene expression
 values for each sample.
 
-<font size= "0.1">
-
 | Chromosome  | Genomic Position | gene symbol | value |
 | ------------- | ------------- | ------------- | ------------- |
 | chr1  | 1234  | Gene A | 135 |
 | chr1  | 5678  | Gene B | 246 |
-
-</font>
 
 ### link data 
 The link data are for drawing curves between two anchor points. In the link data, columns 1, 2, 3 are the segment
