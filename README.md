@@ -278,7 +278,6 @@ dev.off();
 # Exmaples for online OmicCircos
 
 [OmicCircos APP (online)](https://www.cancergenomicscloud.org/)
-)
 
 <img src="out/OmicCircos_app_demo_figure.jpeg" width="600" height="600"> 
 
