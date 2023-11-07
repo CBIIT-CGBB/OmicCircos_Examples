@@ -274,3 +274,5 @@ for (p.i in 1:length(COSMIC_PHENOTYPE_ID)){
 dev.off();
 
 ```
+
+<img src="out/OmicCircos_app_demo_figure.jpeg" width="600" height="600"> 
