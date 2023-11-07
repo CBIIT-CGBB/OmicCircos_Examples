@@ -5,16 +5,17 @@ library(OmicCircos)
 ## colors
 cols  <- rainbow(10, alpha=0.8) 
 
-
+## Input files
 cnv.f  <- "../data_sets/COSMIC_CNV/COSO29914830_lung.txt"
 gexp.f <- "../data_sets/COSMIC_EXP/COSO29914830_lung.txt"
 fus.f  <- "../data_sets/COSMIC_FUSION/COSO29914830_lung.txt"
+## Read data sets
 cnv    <- read.table(cnv.f, header=T)
 gexp   <- read.table(gexp.f, header=T)
 fus    <- read.table(fus.f, header=T)
 ## pdff <- paste0("../out/OC_COSO29914830_lung.pdf")
 ## pdf(pdff, 8, 8);
-## output file name
+
 par(mar=c(2, 2, 2, 2));
 plot(c(1,800), c(1,800), type="n", axes=F, xlab="", ylab="", main="");
 ## plot chromosome
