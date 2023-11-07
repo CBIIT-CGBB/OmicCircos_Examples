@@ -277,7 +277,7 @@ dev.off();
 
 # Exmaples for online OmicCircos
 
-[OmicCircos APP (online)](https://www.cancergenomicscloud.org/![image](https://github.com/CBIIT-CGBB/OmicCircos_Examples/assets/11201085/69e73cc6-404e-4378-b44d-ec8574460ac2)
+[OmicCircos APP (online)](https://www.cancergenomicscloud.org/)
 )
 
 <img src="out/OmicCircos_app_demo_figure.jpeg" width="600" height="600"> 
