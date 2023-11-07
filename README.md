@@ -223,7 +223,7 @@ for (p.i in 1:length(COSMIC_PHENOTYPE_ID)){
 
 <img src="out/02plot_COSMIC_gene.png" width="600" height="600"> 
 
-[R codes](R/02plot_COSMIX_gene.R)
+[R codes](R/02plot_COSMIC_gene.R)
 
 ```r
 ## Remove all objects from the current R session to start with a clean environment
