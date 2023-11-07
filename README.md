@@ -170,7 +170,8 @@ dev.off()
 
 <img src="out/OC_COSO29914826_lung.png" width="600" height="600"> 
 
-[R codes](R/01plot_COSMIC.R)
+[R codes for all samples](R/01plot_COSMIC.R)
+[R codes for one single sample](R/01plot_COSMIC_s.R)
 
 ```r
 ## Remove all objects from the current R session to start with a clean environment
