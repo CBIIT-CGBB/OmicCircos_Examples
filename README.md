@@ -1,12 +1,12 @@
 # OmicCircos_Examples
-# OmicCircos install
+## OmicCircos install
 [OmicCircos](https://bioconductor.org/packages/release/bioc/html/OmicCircos.html) was at bioconductor.
 ```r
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("OmicCircos")
 ```
-# Input file formats
+## Input file formats
 Four input data files are used in the package: segment data, mapping data, link data and link polygon data. Segment data are required to draw the anchor circular track. The remaining three data sets are used to draw additional tracks or connections.
 ### segment data
 The segment data lay out the foundation of a circular graph and typically are used to draw the outmost anchor
@@ -57,7 +57,7 @@ start and end points for the second segment.
 | chr1  | 1111  | 2222 | chr2 | 5555  | 6666 |
 | chr1  | 3333  | 4444 | chr2 | 7777  | 8888 |
 
-# Exmaples
+## Exmaples
 
 <img src="out/OMIC_SampleID1.txt.png" width="600" height="600"> 
 
