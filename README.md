@@ -283,29 +283,6 @@ dev.off();
 
 <img src="out/OmicCircos_app_demo_figure.jpeg" width="600" height="600"> 
 
-### Requirement and parameters
-
-Browser: google chrome
-
-Built-in data:
-
-Segments:
-Hg18
-
-Data:
-Mapping: TCGA BC exp, cnv, cnv_exp
-Link data: TCGA BC fusion
-
-Create plot:
-1.	Chr: hg18, radius=400, width=10, draw chr
-2.	Heatmap2: hg18, gene.exp.2k, radius=300, width=100, choose column, add color, draw scale and color
-3.	ML steps (ML3): cnv.2k, radius=210, width=80, cutoff=0
-4.	Line plot (L): her_cnv_exp, radius=140, width=80, pvalue (colum), choose color, draw background (adv)
-5.	Link(link2): bc fus, radius=130, width=40, color (repeat 18)
-
-Add title and legend (top left of the plot):
-	Title: any thing
-	Legend: position, then each circle from outside to inside
 
 ### The R code could run on the local
 
