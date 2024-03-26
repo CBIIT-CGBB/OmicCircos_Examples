@@ -414,7 +414,7 @@ dat.s <- out.s[,c(7:12)];
 col4  <- as.character(out.s[,6]);
 
 ## plot using OmicCircos
-pdf("HPV_OmicCircos20160809_v2.pdf", 8, 8)
+pdf("HPV_OmicCircos.pdf", 8, 8)
 par(mar=c(2, 2, 2, 2));
 plot(c(1,800), c(1,800), type="n", axes=FALSE, xlab="", ylab="", main="");
 
