@@ -344,4 +344,4 @@ circos(R=130, cir="hg18", W=10,  mapping=TCGA.BC.fus, type="link2", lwd=2, col=c
 
 ```
 
-
+<img src="out/HPV_OmicCircos.png" width="600" height="600"> 
