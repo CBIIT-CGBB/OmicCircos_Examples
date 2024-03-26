@@ -360,7 +360,7 @@ data(UCSC.hg19.chr);
 UCSC.hg19.chr[,1] <- gsub("chr", "Chr", UCSC.hg19.chr[,1])
 
 ## HPV data
-HPV     <- read.table("HPV_anno.txt", header=T);
+HPV     <- read.table("../data_sets/HPV_data/HPV_anno.txt", header=T);
 HPV[,5] <- "NA";
 
 ## HPV gene labels
@@ -387,7 +387,7 @@ for (ch in chr){
 }
 
 ## input data
-dat  <- read.table("HPV_simu.txt", header=T);
+dat  <- read.table("../data_sets/HPV_data/HPV_data.txt", header=T);
 ## human insert positions
 dat2 <- dat[,c(4:6)];
 
